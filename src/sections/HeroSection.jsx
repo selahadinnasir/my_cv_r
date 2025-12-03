@@ -75,7 +75,11 @@ const HeroSection = () => {
           {' '}
           {/* margin: 2rem 0 -> mt-8, added gap */}
           <Button>Hire Me</Button>
-          <Button isGhost>Get Resume</Button>
+          <Button>
+            <a href="./Selahadin_CV.pdf" download>
+              Download CV
+            </a>{' '}
+          </Button>
         </div>
       </div>
     </section>
