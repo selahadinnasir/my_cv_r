@@ -1,20 +1,21 @@
 // src/components/ProjectCard.jsx
 import React from 'react';
-// You need to install react-icons: npm install react-icons
+import { Link } from 'react-router-dom';
 import {
   FaUserTie,
   FaComments,
   FaHandshake,
-  // FaMoneyBillTrendUp,
   FaChild,
   FaTags,
   FaTasks,
   FaStickyNote,
   FaReact,
+  FaShoppingCart,
+  FaGavel,
+  FaNewspaper,
 } from 'react-icons/fa';
 import { SiNextdotjs } from 'react-icons/si';
 
-// Map icon names (from your HTML comments) to the actual React Icon components
 const IconMap = {
   child: FaChild,
   tags: FaTags,
@@ -26,9 +27,19 @@ const IconMap = {
   chat: FaComments,
   react: FaReact,
   nextjs: SiNextdotjs,
+  'shopping-cart': FaShoppingCart,
+  gavel: FaGavel,
+  newspaper: FaNewspaper,
 };
 
-const ProjectCard = ({ title, iconName, link, imageSrc, description }) => {
+const ProjectCard = ({
+  title,
+  iconName,
+  link,
+  imageSrc,
+  description,
+  detailPath,
+}) => {
   // Get the correct Icon component based on the prop
   const IconComponent = IconMap[iconName] || FaStickyNote;
 
@@ -38,39 +49,44 @@ const ProjectCard = ({ title, iconName, link, imageSrc, description }) => {
   };
 
   return (
-    // my-col: text-align: center; width: 30% (desktop) / 45% (tablet) / 100% (mobile)
-    <div className="my-col w-full md:w-[45%] lg:w-[32%]  text-center p-2">
+    <div className="w-full md:w-[45%] lg:w-[32%] text-center p-2">
       <div
-        className="my-card h-[350px] flex flex-col items-center justify-center rounded-xl p-4 mx-2"
+        className="min-h-[400px] flex flex-col items-center justify-between rounded-xl p-5 mx-2 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden"
         style={cardGradientStyle}
       >
-        {/* Icon Container (.icon) */}
-        <div className="icon h-24 w-24 rounded-full bg-accent-dark flex items-center justify-center mb-2">
-          {/* icon svg: font-size: 30px; color: #fff; */}
-          <IconComponent className="text-white text-3xl" />
+        <div className="flex flex-col items-center flex-1 justify-center w-full">
+          <div className="h-20 w-20 rounded-full bg-accent-dark flex items-center justify-center mb-3 shadow-md">
+            <IconComponent className="text-white text-3xl" />
+          </div>
+
+          <h3 className="text-lg font-medium text-accent-dark mb-3">{title}</h3>
+
+          {/* Use an internal Link when a detail page exists, otherwise an external link */}
+          {detailPath ? (
+            <Link to={detailPath} className="block mb-3">
+              <img
+                src={imageSrc}
+                alt={`${title} screenshot`}
+                className="w-[160px] h-[160px] object-cover rounded-3xl border-2 border-white/30"
+              />
+            </Link>
+          ) : (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mb-3"
+            >
+              <img
+                src={imageSrc}
+                alt={`${title} screenshot`}
+                className="w-[160px] h-[160px] object-cover rounded-3xl border-2 border-white/30"
+              />
+            </a>
+          )}
         </div>
 
-        {/* Title (.greet-heading, .blue-text) */}
-        <h3 className="text-xl font-light text-accent-dark my-2">{title}</h3>
-
-        {/* Image Link */}
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block my-2"
-        >
-          {/* Card Image */}
-          <img
-            src={imageSrc}
-            alt={`${title} profile`}
-            className="w-[170px] h-[170px] object-fill rounded-[40px]"
-          />
-        </a>
-
-        {/* Small Para (commented out in original HTML) */}
-        <p className="text-sm text-white mt-1">
-          {/* if text needed */}
+        <p className="text-xs text-white/90 leading-relaxed line-clamp-3 w-full">
           {description}
         </p>
       </div>

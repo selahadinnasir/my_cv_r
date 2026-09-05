@@ -19,8 +19,37 @@ import ProjectCard from '../components/ProjectCard';
 // },
 
 const projects = [
+
   {
     id: 1,
+    title: 'MyShop E-Commerce Platform',
+    iconName: 'shopping-cart',
+    link: 'https://eccomerse-full-sa.vercel.app/',
+    imageSrc: '/pic/eccomerce.jpg',
+    description:
+      'A full-stack e-commerce web application with product search, cart/wishlist management, checkout, and an admin dashboard built with MERN stack.',
+  },
+  {
+    id: 2,
+    title: 'Ethio-Post Legal Automation System',
+    iconName: 'gavel',
+    link: '#',
+    detailPath: '/project/ethio-post',
+    imageSrc: '/pic/legal.jpg',
+    description:
+      'A CRM and legal management system built to automate case tracking, Contract management, document versioning.',
+  },
+  {
+    id: 3,
+    title: 'ECAA Official Content Management System',
+    iconName: 'newspaper',
+    link: 'https://ecaa.gov.et/',
+    imageSrc: '/pic/ecaaLogo.png',
+    description:
+      'A CMS developed for the Ethiopian Civil Aviation Authority (ECAA) to publish news, manage official documents.'
+  },
+  {
+    id: 4,
     title: 'Kids Websites',
     iconName: 'child',
     link: 'https://kelem-kids-sa.netlify.app/',
@@ -30,7 +59,7 @@ const projects = [
   },
 
   {
-    id: 2,
+    id: 5,
     title: 'Ethio-Capital',
     iconName: 'handshake',
     link: 'https://ethio-capital-five.vercel.app/',
@@ -40,7 +69,7 @@ const projects = [
   },
 
   {
-    id: 3,
+    id: 6,
     title: 'Real-Time Chat App',
     iconName: 'chat',
     link: 'https://real-time-chat-app-k382.vercel.app/',
@@ -49,17 +78,17 @@ const projects = [
       'A full-stack MERN real-time chat application with instant messaging and live updates.',
   },
 
+  // {
+  //   id: 7,
+  //   title: 'Note Keeper',
+  //   iconName: 'sticky-note',
+  //   link: 'https://keeper1-mu.vercel.app/',
+  //   imageSrc: '/pic/kepperpp.jpg',
+  //   description:
+  //     'A React-based note-keeping app that allows users to add, delete and organize their notes easily.',
+  // },
   {
-    id: 4,
-    title: 'Note Keeper',
-    iconName: 'sticky-note',
-    link: 'https://keeper1-mu.vercel.app/',
-    imageSrc: '/pic/kepperpp.jpg',
-    description:
-      'A React-based note-keeping app that allows users to add, delete and organize their notes easily.',
-  },
-  {
-    id: 5,
+    id: 8,
     title: 'E-commerce Design to React',
     iconName: 'react',
     link: 'https://ecomercedesign.netlify.app/',
@@ -69,7 +98,7 @@ const projects = [
   },
 
   {
-    id: 6,
+    id: 9,
     title: 'Figma to Next.js Design',
     iconName: 'nextjs',
     link: 'https://figma-to-next-gules.vercel.app/',
@@ -102,6 +131,7 @@ const ProjectsSection = () => {
               title={project.title}
               iconName={project.iconName}
               link={project.link}
+              detailPath={project.detailPath}
               imageSrc={project.imageSrc}
               description={project.description}
             />
